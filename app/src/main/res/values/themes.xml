@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.WelcomeSplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenIconBackgroundColor">@color/darkGreen</item>
+        <item name="windowSplashScreenBackground">@color/darkGreen</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/hikers</item>
         <item name="postSplashScreenTheme">@style/Theme.TrekandTalk_Lab3</item>
         <item name="windowSplashScreenAnimationDuration">@android:integer/config_mediumAnimTime</item>
