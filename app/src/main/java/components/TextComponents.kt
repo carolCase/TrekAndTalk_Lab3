@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 import androidx.compose.ui.unit.sp
+import com.example.trekandtalk_lab3.ui.theme.DarkDarkGreen
 
 
 @Composable
@@ -30,7 +31,7 @@ fun HeadLineText(value:String) {
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             fontStyle = FontStyle.Italic,
-            shadow = Shadow(color = Color.LightGray),
+            shadow = Shadow(color = DarkDarkGreen),
         ),
         color = Color.Black,
         textAlign = TextAlign.Center
@@ -63,7 +64,7 @@ fun SubHeadLineText(value: String) {
             .fillMaxWidth()
             .heightIn(min = 25.dp),
         textAlign = TextAlign.Center,
-        style = MaterialTheme.typography.titleLarge
+        style = MaterialTheme.typography.titleMedium
     )
 
 }

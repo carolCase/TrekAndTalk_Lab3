@@ -16,6 +16,7 @@ val DarkMediumBlue= Color(0xFF0C3344)
 val DarkBeige= Color(0xFF645032)
 val MediumBeige= Color(0xFFAA782F)
 val MediumRosa= Color(0xFF684853)
+val DarkWhite= Color(0xFFF5F4F3)
 
 
 
