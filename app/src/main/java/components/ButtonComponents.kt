@@ -28,6 +28,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.trekandtalk_lab3.ui.theme.DarkDarkGreen
+import com.example.trekandtalk_lab3.ui.theme.DarkWhite
 import kotlinx.coroutines.delay
 
 
@@ -92,7 +94,7 @@ fun StandardButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolea
             .fillMaxWidth()
             .heightIn(48.dp)
             .background(
-                brush = Brush.horizontalGradient(colors = listOf(Color.Black, Color.Gray)),
+                brush = Brush.horizontalGradient(colors = listOf(DarkDarkGreen, Color.LightGray)),
                 shape = RoundedCornerShape(50.dp),
 
                 ),

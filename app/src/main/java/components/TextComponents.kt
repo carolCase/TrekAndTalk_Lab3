@@ -51,7 +51,7 @@ fun HeadLine2Text(value:String) {
             fontStyle = FontStyle.Italic,
             shadow = Shadow(color = Color.LightGray)
         ),
-        color = Color.Gray,
+        color = DarkDarkGreen,
         textAlign = TextAlign.Center
 
     )
