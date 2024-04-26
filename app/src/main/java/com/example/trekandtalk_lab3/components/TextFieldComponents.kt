@@ -1,4 +1,4 @@
-package components
+package com.example.trekandtalk_lab3.components
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.fillMaxWidth

@@ -17,8 +17,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 
 import com.example.trekandtalk_lab3.R
-import components.HeadLineText
-import components.WelcomeButton
+import com.example.trekandtalk_lab3.components.HeadLineText
+import com.example.trekandtalk_lab3.components.WelcomeButton
 
 @Composable
 fun WelcomeScreen() {

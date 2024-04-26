@@ -1,4 +1,4 @@
-package rules
+package com.example.trekandtalk_lab3.rules
 
 
 
@@ -8,7 +8,7 @@ data class HandlingResult(val status : Boolean = false,val message: String? = nu
 
 object ErrorHandling
 {
-    fun checkUserName(userName:String):HandlingResult{
+    fun checkUserName(userName:String): HandlingResult {
         return HandlingResult(
             (userName.isNotEmpty() && userName.length>=4),
             if (userName.isNotEmpty() && userName.length < 4) "Username must be at least 4 characters long." else null
@@ -16,14 +16,14 @@ object ErrorHandling
 
     }
 
-    fun checkEmail(email:String): HandlingResult{
+    fun checkEmail(email:String): HandlingResult {
         return HandlingResult(
             (email.isNotEmpty() && email.length>=4),
             if (email.isNotEmpty() && email.length < 4) "Email must be at least 4 characters long." else null
         )
     }
 
-    fun checkPassword(password:String) : HandlingResult{
+    fun checkPassword(password:String) : HandlingResult {
         return HandlingResult(
             (password.isNotEmpty() && password.length>=6),
             if (password.isNotEmpty() && password.length < 6) "Password must be at least 6 characters long." else null

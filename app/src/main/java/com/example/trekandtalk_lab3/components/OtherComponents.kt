@@ -1,4 +1,4 @@
-package components
+package com.example.trekandtalk_lab3.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -87,7 +87,7 @@ fun ClickableTextSignUp(value: String) {
                 fontStyle = FontStyle.Normal),
             textAlign = TextAlign.Center,
             textDecoration = TextDecoration.Underline,
-            //modifier = Modifier.clickable { Screen.NavigationRouter.navigateTo(Screen.LoginScreen) }
+           // modifier = Modifier.clickable {Screen.NavigationRouter.navigateTo()}
 
         )
     }

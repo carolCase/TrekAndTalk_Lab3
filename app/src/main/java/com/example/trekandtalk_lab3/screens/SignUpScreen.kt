@@ -22,16 +22,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.trekandtalk_lab3.R
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
-import components.CheckboxComponent
-import components.ClickableTextSignUp
-import components.DividerComponent
-import components.EmailInputTextField
-import components.HeadLine2Text
-import components.PasswordTextField
-import components.StandardButton
+import com.example.trekandtalk_lab3.components.CheckboxComponent
+import com.example.trekandtalk_lab3.components.ClickableTextSignUp
+import com.example.trekandtalk_lab3.components.DividerComponent
+import com.example.trekandtalk_lab3.components.EmailInputTextField
+import com.example.trekandtalk_lab3.components.HeadLine2Text
+import com.example.trekandtalk_lab3.components.PasswordTextField
+import com.example.trekandtalk_lab3.components.StandardButton
 
-import components.SubHeadLineText
-import components.UserNameTextField
+import com.example.trekandtalk_lab3.components.SubHeadLineText
+import com.example.trekandtalk_lab3.components.UserNameTextField
 
 @Composable
 fun SignUpScreen() {
