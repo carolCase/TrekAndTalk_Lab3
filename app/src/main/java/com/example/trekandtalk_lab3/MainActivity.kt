@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.trekandtalk_lab3.navigation.ScreenNavigator
 import com.example.trekandtalk_lab3.screens.LoginScreen
 import com.example.trekandtalk_lab3.screens.SignUpScreen
 import com.example.trekandtalk_lab3.screens.WelcomeScreen
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
                   .fillMaxSize(),
                   contentAlignment = Alignment.Center,)
               {
-                  LoginScreen()
+                 ScreenNavigator()
               }
 
             }

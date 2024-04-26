@@ -28,8 +28,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
+
+import com.example.trekandtalk_lab3.navigation.Screen
 import com.example.trekandtalk_lab3.ui.theme.DarkDarkGreen
-import com.example.trekandtalk_lab3.ui.theme.DarkWhite
 import kotlinx.coroutines.delay
 
 
@@ -64,7 +66,7 @@ fun WelcomeButton() {
                     .padding(16.dp)
             ) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = {Screen.NavigationRouter.navigateTo(Screen.SignUpScreen)},
                     colors = ButtonDefaults.buttonColors(Color.Transparent)
                 ) {
                     Text(
