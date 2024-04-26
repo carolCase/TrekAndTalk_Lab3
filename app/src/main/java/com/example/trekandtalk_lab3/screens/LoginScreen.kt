@@ -3,7 +3,7 @@ package com.example.trekandtalk_lab3.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,8 +24,9 @@ import com.example.trekandtalk_lab3.R
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
 import com.example.trekandtalk_lab3.components.ClickableTextSignUp
 import com.example.trekandtalk_lab3.components.HeadLine2Text
+import com.example.trekandtalk_lab3.components.LoginButton
 import com.example.trekandtalk_lab3.components.PasswordTextField
-import com.example.trekandtalk_lab3.components.StandardButton
+
 import com.example.trekandtalk_lab3.components.UserNameTextField
 
 @Composable
@@ -59,7 +60,7 @@ fun LoginScreen() {
 
             Spacer(modifier = Modifier.height(26.dp))
 
-            StandardButton(value = "Login", onButtonClicked = { /*TODO*/ })
+            LoginButton(value = "Login", onButtonClicked = { /*TODO*/ })
 
 
 

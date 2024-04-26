@@ -83,7 +83,37 @@ fun WelcomeButton() {
 
 
 @Composable
-fun StandardButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
+fun SignUpButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
+    Button(onClick = { onButtonClicked.invoke()}, modifier = Modifier
+        .fillMaxWidth()
+        .heightIn(48.dp),
+        enabled = isEnabled,
+        contentPadding = PaddingValues(),
+        colors = ButtonDefaults.buttonColors(Color.Transparent)
+    )
+    {
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(48.dp)
+            .background(
+                brush = Brush.horizontalGradient(colors = listOf(DarkDarkGreen, Color.LightGray)),
+                shape = RoundedCornerShape(50.dp),
+
+                ),
+            contentAlignment = Alignment.Center
+        )
+        {
+            Text(text = value,
+                fontSize = 18.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+
+@Composable
+fun LoginButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
     Button(onClick = { onButtonClicked.invoke()}, modifier = Modifier
         .fillMaxWidth()
         .heightIn(48.dp),

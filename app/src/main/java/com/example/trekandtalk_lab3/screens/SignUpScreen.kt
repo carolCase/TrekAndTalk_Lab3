@@ -15,11 +15,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
+
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+
+
 import com.example.trekandtalk_lab3.R
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
 import com.example.trekandtalk_lab3.components.CheckboxComponent
@@ -28,13 +29,19 @@ import com.example.trekandtalk_lab3.components.DividerComponent
 import com.example.trekandtalk_lab3.components.EmailInputTextField
 import com.example.trekandtalk_lab3.components.HeadLine2Text
 import com.example.trekandtalk_lab3.components.PasswordTextField
-import com.example.trekandtalk_lab3.components.StandardButton
+
+import com.example.trekandtalk_lab3.components.SignUpButton
+
 
 import com.example.trekandtalk_lab3.components.SubHeadLineText
 import com.example.trekandtalk_lab3.components.UserNameTextField
+import com.example.trekandtalk_lab3.data.uievents.SignUpUIEvent
+import com.example.trekandtalk_lab3.data.viewmodels.SignUpViewModel
+import com.example.trekandtalk_lab3.navigation.Screen
+import com.example.trekandtalk_lab3.navigation.ScreenNavigator
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(signUpViewModel: SignUpViewModel) {
     Surface(
         color = DarkWhite,
         modifier = Modifier
@@ -59,7 +66,13 @@ fun SignUpScreen() {
 
           Spacer(modifier = Modifier.height(26.dp))
 
-          StandardButton(value = "Sign Up", onButtonClicked = { /*TODO*/ })
+             SignUpButton(value ="Sign Up" , onButtonClicked = {
+                // Screen.NavigationRouter.navigateTo(Screen.LoginScreen)
+                 signUpViewModel.onEvent(SignUpUIEvent.RegisterButton)
+             },isEnabled = signUpViewModel.allErrorHandlingPassed.value)
+
+
+
 
           DividerComponent()
           Spacer(modifier = Modifier.height(30.dp))
@@ -80,8 +93,3 @@ fun SignUpScreen() {
     }
 }
 
-@Preview
-@Composable
-fun SignUpPreview() {
-    SignUpScreen()
-}

@@ -2,9 +2,9 @@ package com.example.trekandtalk_lab3.rules
 
 
 
-data class HandlingResult(val status : Boolean = false,val message: String? = null){
+data class HandlingResult(val status : Boolean = false,val message: String? = null)
 
-}
+
 
 object ErrorHandling
 {
