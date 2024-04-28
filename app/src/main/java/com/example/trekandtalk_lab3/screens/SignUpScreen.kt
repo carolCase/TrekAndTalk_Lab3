@@ -19,8 +19,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 
 import androidx.compose.ui.unit.dp
-
-
 import com.example.trekandtalk_lab3.R
 import com.example.trekandtalk_lab3.components.AuthButton
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
@@ -30,10 +28,6 @@ import com.example.trekandtalk_lab3.components.DividerComponent
 import com.example.trekandtalk_lab3.components.EmailInputTextField
 import com.example.trekandtalk_lab3.components.HeadLine2Text
 import com.example.trekandtalk_lab3.components.PasswordTextField
-
-import com.example.trekandtalk_lab3.components.SignUpButton
-
-
 import com.example.trekandtalk_lab3.components.SubHeadLineText
 import com.example.trekandtalk_lab3.components.UserNameTextField
 import com.example.trekandtalk_lab3.data.uievents.SignUpUIEvent

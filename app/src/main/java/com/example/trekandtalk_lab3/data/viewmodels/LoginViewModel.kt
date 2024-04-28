@@ -32,8 +32,8 @@ class LoginViewModel:ViewModel() {
                 )
             }
 
-            is LoginUIEvent.RegisterButton -> {
-
+            is LoginUIEvent.LoginButton -> {
+                 login()
             }
 
 

@@ -74,8 +74,8 @@ fun LoginScreen(loginViewModel:LoginViewModel) {
             Spacer(modifier = Modifier.height(26.dp))
 
             AuthButton(value = "Login", onButtonClicked = {
-
-            })
+             loginViewModel.onEvent(LoginUIEvent.LoginButton)
+            },isEnabled = loginViewModel.allErrorHandlingPassed.value)
         }
 
 

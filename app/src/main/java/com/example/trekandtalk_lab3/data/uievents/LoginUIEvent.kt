@@ -5,7 +5,7 @@ package com.example.trekandtalk_lab3.data.uievents
     data class EmailChanged(val email:String):LoginUIEvent()
     data class PasswordChanged(val password:String):LoginUIEvent()
 
-    data object RegisterButton: LoginUIEvent()
+    data object LoginButton: LoginUIEvent()
 
 
 }

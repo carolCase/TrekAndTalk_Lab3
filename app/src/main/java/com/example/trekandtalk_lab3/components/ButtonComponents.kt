@@ -113,7 +113,7 @@ fun AuthButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = 
 
 
 @Composable
-fun LoginButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
+fun TranslateButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
     Button(onClick = { onButtonClicked.invoke()}, modifier = Modifier
         .fillMaxWidth()
         .heightIn(48.dp),
