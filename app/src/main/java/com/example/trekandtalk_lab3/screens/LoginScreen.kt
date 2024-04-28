@@ -1,5 +1,6 @@
 package com.example.trekandtalk_lab3.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,19 +19,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+
 import androidx.compose.ui.unit.dp
 import com.example.trekandtalk_lab3.R
+import com.example.trekandtalk_lab3.components.AuthButton
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
 import com.example.trekandtalk_lab3.components.ClickableTextSignUp
+import com.example.trekandtalk_lab3.components.EmailInputTextField
 import com.example.trekandtalk_lab3.components.HeadLine2Text
-import com.example.trekandtalk_lab3.components.LoginButton
 import com.example.trekandtalk_lab3.components.PasswordTextField
 
-import com.example.trekandtalk_lab3.components.UserNameTextField
+
+import com.example.trekandtalk_lab3.data.uievents.LoginUIEvent
+
+import com.example.trekandtalk_lab3.data.viewmodels.LoginViewModel
+
+import com.example.trekandtalk_lab3.navigation.Screen
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(loginViewModel:LoginViewModel) {
     Surface(
         color = DarkWhite,
         modifier = Modifier
@@ -53,29 +60,28 @@ fun LoginScreen() {
 
             HeadLine2Text(value = "Login")
             Spacer(modifier = Modifier.height(26.dp))
-            UserNameTextField(labelValue = "name", painterResource = painterResource(id = R.drawable.baseline_account_circle_24))
+            EmailInputTextField(labelValue = "email",
+                painterResource = painterResource(id = R.drawable.baseline_email_24),
+                onTextSelected = {loginViewModel.onEvent(LoginUIEvent.EmailChanged(it))},
+                errorStatus = loginViewModel.loginUIState.value.emailError)
 
-            PasswordTextField(labelValue = "password", painterResource = painterResource(id = R.drawable.baseline_password_24))
+            PasswordTextField(labelValue = "password",
+                painterResource = painterResource(id = R.drawable.baseline_password_24),
+                onTextSelected = {loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it))},
+                errorStatus = loginViewModel.loginUIState.value.passwordError)
             ClickableTextSignUp(value = " Forgot password" )
 
             Spacer(modifier = Modifier.height(26.dp))
 
-            LoginButton(value = "Login", onButtonClicked = { /*TODO*/ })
+            AuthButton(value = "Login", onButtonClicked = {
 
-
-
-
-
-
-
-
-
-
-
+            })
         }
 
 
-
+           BackHandler {
+           Screen.NavigationRouter.navigateTo(Screen.SignUpScreen)
+           }
 
 
 
@@ -83,8 +89,3 @@ fun LoginScreen() {
     }
 }
 
-@Preview
-@Composable
-fun Loginpreview() {
-    LoginScreen()
-}

@@ -83,7 +83,7 @@ fun WelcomeButton() {
 
 
 @Composable
-fun SignUpButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
+fun AuthButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
     Button(onClick = { onButtonClicked.invoke()}, modifier = Modifier
         .fillMaxWidth()
         .heightIn(48.dp),

@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.trekandtalk_lab3.navigation.Screen
 
 
 @Composable
@@ -87,7 +88,7 @@ fun ClickableTextSignUp(value: String) {
                 fontStyle = FontStyle.Normal),
             textAlign = TextAlign.Center,
             textDecoration = TextDecoration.Underline,
-           // modifier = Modifier.clickable {Screen.NavigationRouter.navigateTo()}
+            modifier = Modifier.clickable {Screen.NavigationRouter.navigateTo(Screen.LoginScreen)}
 
         )
     }

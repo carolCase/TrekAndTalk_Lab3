@@ -7,6 +7,7 @@ sealed class Screen {
     data object WelcomeScreen : Screen()
     data object SignUpScreen : Screen()
     data object LoginScreen : Screen()
+    data object TranslatorScreen :Screen()
 
 
 

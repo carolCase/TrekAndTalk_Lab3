@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "967578789157",
+    "project_id": "trek-and-talk",
+    "storage_bucket": "trek-and-talk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967578789157:android:eaba60c5c0fc2dbfcbe6cc",
+        "android_client_info": {
+          "package_name": "com.example.trekandtalk_lab3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_KASGFnYmMd9OKOreyv9YLLVE7UtPiv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

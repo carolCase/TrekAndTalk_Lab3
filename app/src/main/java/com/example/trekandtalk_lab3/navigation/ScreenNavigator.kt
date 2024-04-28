@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.trekandtalk_lab3.data.viewmodels.SignUpViewModel
 import com.example.trekandtalk_lab3.screens.LoginScreen
 import com.example.trekandtalk_lab3.screens.SignUpScreen
+import com.example.trekandtalk_lab3.screens.TranslatorScreen
 import com.example.trekandtalk_lab3.screens.WelcomeScreen
 
 @Composable
@@ -30,9 +31,11 @@ Crossfade(targetState = Screen.NavigationRouter.currentScreen, label = "")
         }
 
         is Screen.LoginScreen->{
-            LoginScreen()
+            LoginScreen(signUpViewModel = SignUpViewModel())
         }
-
+         is Screen.TranslatorScreen->{
+             TranslatorScreen()
+         }
 
 
 

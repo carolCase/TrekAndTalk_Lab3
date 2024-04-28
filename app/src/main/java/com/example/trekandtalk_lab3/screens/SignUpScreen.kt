@@ -17,11 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+
 import androidx.compose.ui.unit.dp
 
 
 import com.example.trekandtalk_lab3.R
+import com.example.trekandtalk_lab3.components.AuthButton
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
 import com.example.trekandtalk_lab3.components.CheckboxComponent
 import com.example.trekandtalk_lab3.components.ClickableTextSignUp
@@ -36,9 +37,10 @@ import com.example.trekandtalk_lab3.components.SignUpButton
 import com.example.trekandtalk_lab3.components.SubHeadLineText
 import com.example.trekandtalk_lab3.components.UserNameTextField
 import com.example.trekandtalk_lab3.data.uievents.SignUpUIEvent
+
 import com.example.trekandtalk_lab3.data.viewmodels.SignUpViewModel
-import com.example.trekandtalk_lab3.navigation.Screen
-import com.example.trekandtalk_lab3.navigation.ScreenNavigator
+
+
 
 @Composable
 fun SignUpScreen(signUpViewModel: SignUpViewModel) {
@@ -56,19 +58,29 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel) {
       {
        SubHeadLineText(value = "Register new Account")
           HeadLine2Text(value = "Trek'n Talk")
-        UserNameTextField(labelValue = "name", painterResource(id = R.drawable.baseline_account_circle_24))
+        UserNameTextField(labelValue = "name",
+            painterResource(id = R.drawable.baseline_account_circle_24),
+            onTextSelected = {signUpViewModel.onEvent(SignUpUIEvent.UserNameChanged(it))},
+            errorStatus = signUpViewModel.signUpUIState.value.userNameError)
 
-          EmailInputTextField(labelValue = "email", painterResource(id = R.drawable.baseline_email_24))
+          EmailInputTextField(
+              labelValue = "email",
+              painterResource(id = R.drawable.baseline_email_24),
+              onTextSelected = {signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it))},
+              errorStatus = signUpViewModel.signUpUIState.value.emailError)
 
-        PasswordTextField(labelValue = "password", painterResource(id =  R.drawable.baseline_password_24))
+          PasswordTextField(labelValue = "password",
+              painterResource(id =  R.drawable.baseline_password_24),
+              onTextSelected = {signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it))},
+              errorStatus = signUpViewModel.signUpUIState.value.passwordError)
 
           CheckboxComponent(value = "Accept Privacy Policy and Terms of Use")
 
           Spacer(modifier = Modifier.height(26.dp))
 
-             SignUpButton(value ="Sign Up" , onButtonClicked = {
-                // Screen.NavigationRouter.navigateTo(Screen.LoginScreen)
-                 signUpViewModel.onEvent(SignUpUIEvent.RegisterButton)
+             AuthButton(value ="Sign Up" , onButtonClicked = {
+
+                signUpViewModel.onEvent(SignUpUIEvent.RegisterButton)
              },isEnabled = signUpViewModel.allErrorHandlingPassed.value)
 
 
