@@ -1,6 +1,7 @@
 package com.example.trekandtalk_lab3.data.viewmodels
 
 import androidx.compose.runtime.mutableStateOf
+
 import androidx.lifecycle.ViewModel
 import com.example.trekandtalk_lab3.data.uievents.LoginUIEvent
 
@@ -8,10 +9,13 @@ import com.example.trekandtalk_lab3.data.uistates.LoginUIState
 import com.example.trekandtalk_lab3.navigation.Screen
 
 import com.example.trekandtalk_lab3.rules.ErrorHandling
+
 import com.google.firebase.auth.FirebaseAuth
 
 
+
 class LoginViewModel:ViewModel() {
+    var userName = mutableStateOf("")
     var loginUIState = mutableStateOf(LoginUIState())
     var allErrorHandlingPassed = mutableStateOf(false)
 
@@ -67,6 +71,24 @@ private fun login(){
             }
         }
 }
+    fun logout(){
+        val firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth.signOut() //log Out
+        val authStateListener = FirebaseAuth.AuthStateListener {
+            if (it.currentUser == null) {
+                Screen.NavigationRouter.navigateTo(Screen.LoginScreen)
+            }
+        }
+        firebaseAuth.addAuthStateListener(authStateListener)
+    }
+
+    fun displayUser() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            userName.value = currentUser.displayName ?: ""
+        }
+    }
+
 
 
 }

@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 
 import com.example.trekandtalk_lab3.navigation.Screen
 import com.example.trekandtalk_lab3.ui.theme.DarkDarkGreen
+import com.example.trekandtalk_lab3.ui.theme.DarkMediumBlue
 import kotlinx.coroutines.delay
 
 
@@ -126,7 +127,7 @@ fun TranslateButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boole
             .fillMaxWidth()
             .heightIn(48.dp)
             .background(
-                brush = Brush.horizontalGradient(colors = listOf(DarkDarkGreen, Color.LightGray)),
+                brush = Brush.horizontalGradient(colors = listOf(DarkMediumBlue, Color.White)),
                 shape = RoundedCornerShape(50.dp),
 
                 ),
@@ -134,7 +135,7 @@ fun TranslateButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boole
         )
         {
             Text(text = value,
-                fontSize = 18.sp,
+                fontSize = 25.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold)
         }
