@@ -61,29 +61,7 @@ class TranslateViewModel: ViewModel() {
 }
 
 
-    /*   fun onTranslateButtonClicked(text:String,context:Context)
-       {
-           val options  = TranslatorOptions
-               .Builder()
-               .setSourceLanguage(TranslateLanguage.ENGLISH)
-               .setTargetLanguage(TranslateLanguage.SPANISH)
-               .build()
 
-           val languageTranslator = Translation
-               .getClient(options)
-           languageTranslator.translate(text)
-               .addOnSuccessListener {
-                   translatedText ->
-                   _state.value = state.value.copy(
-                       translatedText = translatedText
-                   )
-                   Log.d(TAG, "working fine")
-               }
-               .addOnFailureListener {
-                       e ->
-                   Log.e(TAG, "Translation failed", e)
-               }
-       }*/
 
 
 

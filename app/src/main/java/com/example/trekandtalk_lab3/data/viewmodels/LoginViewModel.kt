@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 class LoginViewModel:ViewModel() {
-    var userName = mutableStateOf("")
+
     var loginUIState = mutableStateOf(LoginUIState())
     var allErrorHandlingPassed = mutableStateOf(false)
 
@@ -35,7 +35,7 @@ class LoginViewModel:ViewModel() {
 
             is LoginUIEvent.LoginButton -> {
                  login()
-                displayUser()
+
 
             }
 
@@ -81,12 +81,11 @@ private fun login(){
         firebaseAuth.addAuthStateListener(authStateListener)
     }
 
-    fun displayUser() {
+    fun displayUser(): String {
         val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            currentUser.displayName?: ""
-        }
+        return currentUser?.displayName ?: ""
     }
+
 
 
 }
