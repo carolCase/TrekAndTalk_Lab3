@@ -12,7 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 
 val  DarkDarkGreen = Color(0xD30C1F0D)
 val  MediumGreen = Color(0xFF204D22)
-val DarkMediumBlue= Color(0xFF134961)
+val DarkMediumBlue= Color(0xFF1F6B8D)
 val DarkBeige= Color(0xFF645032)
 val MediumBeige= Color(0xFFAA782F)
 val MediumRosa= Color(0xFF684853)

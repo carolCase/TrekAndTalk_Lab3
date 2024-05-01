@@ -4,12 +4,9 @@ import androidx.compose.runtime.mutableStateOf
 
 import androidx.lifecycle.ViewModel
 import com.example.trekandtalk_lab3.data.uievents.LoginUIEvent
-
 import com.example.trekandtalk_lab3.data.uistates.LoginUIState
 import com.example.trekandtalk_lab3.navigation.Screen
-
 import com.example.trekandtalk_lab3.rules.ErrorHandling
-
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -38,6 +35,8 @@ class LoginViewModel:ViewModel() {
 
             is LoginUIEvent.LoginButton -> {
                  login()
+                displayUser()
+
             }
 
 
@@ -85,10 +84,9 @@ private fun login(){
     fun displayUser() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
-            userName.value = currentUser.displayName ?: ""
+            currentUser.displayName?: ""
         }
     }
-
 
 
 }

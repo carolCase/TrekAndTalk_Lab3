@@ -2,6 +2,7 @@ package com.example.trekandtalk_lab3.screens
 
 
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,13 +17,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 import com.example.trekandtalk_lab3.components.TranslateButton
 import com.example.trekandtalk_lab3.components.TranslateTextField
 import com.example.trekandtalk_lab3.data.viewmodels.LoginViewModel
+import com.example.trekandtalk_lab3.data.viewmodels.SignUpViewModel
 import com.example.trekandtalk_lab3.data.viewmodels.TranslateViewModel
 import com.example.trekandtalk_lab3.ui.theme.DarkMediumBlue
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
@@ -32,14 +34,13 @@ import com.example.trekandtalk_lab3.ui.theme.DarkWhite
 
 @Composable
 fun TranslatorScreen(
-    loginViewModel:LoginViewModel,
+    loginViewModel: LoginViewModel,
     translateViewModel: TranslateViewModel) {
+
     val state = translateViewModel.state.value
-    val context = LocalContext.current
-    val userName = loginViewModel.userName.value
-    LaunchedEffect(Unit) {
-        loginViewModel.displayUser()
-    }
+    val userName = loginViewModel.displayUser().toString()
+
+
 
   Surface(  color = DarkWhite,
       modifier = Modifier
@@ -56,14 +57,12 @@ Column(modifier = Modifier
 
    Text(text = "Welcome, ${userName}!")
     Spacer(modifier = Modifier.height(26.dp))
-    TranslateTextField(translateViewModel = TranslateViewModel() )
+    TranslateTextField(translateViewModel)
     Spacer(modifier = Modifier.height(26.dp))
 
 
     TranslateButton(value = "Translate", onButtonClicked =
-    {translateViewModel.onTranslateButtonClicked(
-        text = state.textToBeTranslated,
-        context = context)})
+    {translateViewModel.onTranslateButtonClicked(state.textToBeTranslated)})
 
     Text(
         text = state.translatedText,
