@@ -8,7 +8,7 @@ import com.example.trekandtalk_lab3.data.uistates.LoginUIState
 import com.example.trekandtalk_lab3.navigation.Screen
 import com.example.trekandtalk_lab3.rules.ErrorHandling
 import com.google.firebase.auth.FirebaseAuth
-
+import com.google.firebase.database.FirebaseDatabase
 
 
 class LoginViewModel:ViewModel() {
@@ -81,11 +81,11 @@ private fun login(){
         firebaseAuth.addAuthStateListener(authStateListener)
     }
 
-    fun displayUser(): String {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        return currentUser?.displayName ?: ""
+    fun displayUser(callback: (String) -> Unit): String {
+
     }
 
-
+    /*val currentUser = FirebaseAuth.getInstance().currentUser
+    return currentUser?.displayName ?: ""*/
 
 }

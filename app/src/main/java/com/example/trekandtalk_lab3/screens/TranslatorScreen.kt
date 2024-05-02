@@ -4,6 +4,7 @@ package com.example.trekandtalk_lab3.screens
 
 
 
+import android.graphics.drawable.Icon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +12,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material3.Icon
+
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,6 +33,7 @@ import com.example.trekandtalk_lab3.components.TranslateTextField
 import com.example.trekandtalk_lab3.data.viewmodels.LoginViewModel
 
 import com.example.trekandtalk_lab3.data.viewmodels.TranslateViewModel
+import com.example.trekandtalk_lab3.ui.theme.DarkDarkBlue
 
 import com.example.trekandtalk_lab3.ui.theme.DarkMediumBlue
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
@@ -55,8 +60,11 @@ Column(modifier = Modifier
     .padding(30.dp),
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally) {
+  /*  Icon(imageVector = Icons.Filled.AccountCircle,
+        contentDescription = "",
+        tint = DarkDarkBlue)*/
 
-   Text(text = "Welcome, $userName!")
+   Text(text = "Welcome, $userName!",Modifier.padding(20.dp))
     Text(text = "Choose Language")
     DropDownMenuLanguage()
     Spacer(modifier = Modifier.height(26.dp))
@@ -70,9 +78,12 @@ Column(modifier = Modifier
     Text(
         text = state.translatedText,
         color = Color.White,
-        modifier = Modifier.align(
-            Alignment.CenterHorizontally
-        ))
+        modifier = Modifier
+            .align(
+                Alignment.CenterHorizontally
+            )
+            .padding(26.dp)
+    )
 
 
 
