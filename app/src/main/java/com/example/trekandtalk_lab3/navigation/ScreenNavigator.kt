@@ -12,6 +12,7 @@ import com.example.trekandtalk_lab3.data.viewmodels.LoginViewModel
 import com.example.trekandtalk_lab3.data.viewmodels.SignUpViewModel
 import com.example.trekandtalk_lab3.data.viewmodels.TranslateViewModel
 import com.example.trekandtalk_lab3.screens.LoginScreen
+import com.example.trekandtalk_lab3.screens.SavedTranslationScreen
 import com.example.trekandtalk_lab3.screens.SignUpScreen
 import com.example.trekandtalk_lab3.screens.TranslatorScreen
 import com.example.trekandtalk_lab3.screens.WelcomeScreen
@@ -36,11 +37,11 @@ Crossfade(targetState = Screen.NavigationRouter.currentScreen, label = "")
             LoginScreen(loginViewModel = LoginViewModel())
         }
          is Screen.TranslatorScreen->{
-             TranslatorScreen(
-                 loginViewModel = LoginViewModel(),
-                 translateViewModel = TranslateViewModel())
+             TranslatorScreen(translateViewModel = TranslateViewModel())
          }
-
+        is Screen.SavedTranslationScreen->{
+            SavedTranslationScreen(translateViewModel = TranslateViewModel())
+        }
 
 
 

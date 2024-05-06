@@ -57,11 +57,15 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
     implementation("androidx.core:core-splashscreen:1.0.1")
-    implementation ("com.google.android.material:material:1.11.0")
+    implementation ("com.google.android.material:material:1.12.0")
     implementation ("androidx.compose.material:material-icons-extended")
     implementation ("com.google.mlkit:translate:17.0.2")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("com.google.firebase:firebase-database-ktx:20.3.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.11.1")
+    //implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    //implementation("androidx.compose.runtime:runtime:1.6.6")
+
 
 
 

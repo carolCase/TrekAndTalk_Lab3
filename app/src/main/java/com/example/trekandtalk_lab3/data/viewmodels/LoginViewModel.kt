@@ -5,10 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.trekandtalk_lab3.data.uievents.LoginUIEvent
 import com.example.trekandtalk_lab3.data.uistates.LoginUIState
+
 import com.example.trekandtalk_lab3.navigation.Screen
 import com.example.trekandtalk_lab3.rules.ErrorHandling
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+
 
 
 class LoginViewModel:ViewModel() {
@@ -34,7 +35,8 @@ class LoginViewModel:ViewModel() {
             }
 
             is LoginUIEvent.LoginButton -> {
-                 login()
+                login()
+
 
 
             }
@@ -43,6 +45,7 @@ class LoginViewModel:ViewModel() {
         }
 
     }
+
     private fun ErrorHandlingRules() {
         val emailResult = ErrorHandling.checkEmail(
             email = loginUIState.value.email
@@ -58,34 +61,23 @@ class LoginViewModel:ViewModel() {
         )
         allErrorHandlingPassed.value = emailResult.status && passwordResult.status
     }
-private fun login(){
-    val email = loginUIState.value.email
-    val password = loginUIState.value.password
-    FirebaseAuth
-        .getInstance()
-        .signInWithEmailAndPassword(email,password)
-        .addOnCompleteListener {
-            if(it.isSuccessful){
-                Screen.NavigationRouter.navigateTo(Screen.TranslatorScreen)
+
+    private fun login() {
+        val email = loginUIState.value.email
+        val password = loginUIState.value.password
+        FirebaseAuth
+            .getInstance()
+            .signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Screen.NavigationRouter.navigateTo(Screen.TranslatorScreen)
+
+                }
             }
-        }
-}
-    fun logout(){
-        val firebaseAuth = FirebaseAuth.getInstance()
-        firebaseAuth.signOut() //log Out
-        val authStateListener = FirebaseAuth.AuthStateListener {
-            if (it.currentUser == null) {
-                Screen.NavigationRouter.navigateTo(Screen.LoginScreen)
-            }
-        }
-        firebaseAuth.addAuthStateListener(authStateListener)
     }
 
-    fun displayUser(callback: (String) -> Unit): String {
 
-    }
-
-    /*val currentUser = FirebaseAuth.getInstance().currentUser
-    return currentUser?.displayName ?: ""*/
 
 }
+
+

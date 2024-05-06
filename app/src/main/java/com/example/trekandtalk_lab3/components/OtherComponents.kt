@@ -147,3 +147,22 @@ fun DropDownMenuLanguage() {
         }
     }
 }
+
+@Composable
+fun ClickableTextGoToProfile(value: String) {
+    Column(verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            text = value,
+            style = TextStyle(
+                fontSize = 24.sp,
+                fontWeight = FontWeight.SemiBold,
+                fontStyle = FontStyle.Normal),
+            textAlign = TextAlign.Center,
+            textDecoration = TextDecoration.Underline,
+            modifier = Modifier.clickable {
+                Screen.NavigationRouter.navigateTo(Screen.SavedTranslationScreen)}
+
+        )
+    }
+}
