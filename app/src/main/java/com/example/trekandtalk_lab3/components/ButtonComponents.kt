@@ -3,7 +3,7 @@ package com.example.trekandtalk_lab3.components
 import androidx.compose.foundation.background
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
+
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 
@@ -145,21 +145,20 @@ fun TranslateButton(value:String, onButtonClicked : ()-> Unit) {
 }
 @Composable
 fun ButtonComponent(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
-    Column( modifier = Modifier
-        .fillMaxWidth()
-        .padding(bottom = 16.dp) ) {
+
         Button(
             onClick = { onButtonClicked.invoke() }, modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(60.dp),
+                .heightIn(48.dp),
             enabled = isEnabled,
+            contentPadding = PaddingValues(),
             colors = ButtonDefaults.buttonColors(Color.Transparent)
         )
         {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .heightIn(100.dp)
+                    .heightIn(48.dp)
                     .background(
                         brush = Brush.horizontalGradient(colors = listOf(MediumRosa, MediumBeige)),
                         shape = RoundedCornerShape(50.dp),
@@ -178,4 +177,4 @@ fun ButtonComponent(value:String, onButtonClicked : ()-> Unit, isEnabled : Boole
         }
     }
 
-}
+
