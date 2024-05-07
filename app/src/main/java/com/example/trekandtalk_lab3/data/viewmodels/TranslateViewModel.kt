@@ -2,27 +2,35 @@ package com.example.trekandtalk_lab3.data.viewmodels
 
 import android.content.ContentValues.TAG
 import android.util.Log
+
 import androidx.compose.runtime.MutableState
+
 
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.trekandtalk_lab3.data.uistates.TranslateState
 import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateListOf
 
 import com.example.trekandtalk_lab3.navigation.Screen
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.values
+import com.google.firebase.database.values
 
 
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import java.util.concurrent.Flow
 
 
 class TranslateViewModel : ViewModel() {
@@ -32,7 +40,10 @@ class TranslateViewModel : ViewModel() {
 
     private val _state = mutableStateOf(TranslateState())
     val state: State<TranslateState> = _state
-    private val translatedTexts = mutableStateListOf<String>()
+   // private val translatedTexts = mutableStateListOf<String>()
+
+
+
 
     fun onTextTranslatedChange(text: String) {
         _state.value = state.value.copy(
@@ -60,7 +71,7 @@ class TranslateViewModel : ViewModel() {
                 }
             }
             .addOnSuccessListener { translatedText ->
-                // Translation successful, update the state
+
                 val currentState = state.value
                 _state.value = currentState.copy(
                     translatedText = translatedText
@@ -106,31 +117,52 @@ class TranslateViewModel : ViewModel() {
     }
     private fun addTranslatedText(translatedText: String) {
         currentUser?.uid?.let { uid ->
-            val newRef = usersRef.child(uid).push()
-            newRef.setValue(translatedTexts)
-            translatedTexts.add(translatedText)
+            val newRef = usersRef.child(uid).child("translatedText") // Reference the "translatedText" path
+            newRef.setValue(translatedText)
+                .addOnSuccessListener {
+                    Log.d(TAG, "Translated text added to realtime database")
+                }
+                .addOnFailureListener { e ->
+                    Log.e(TAG, "Failed to add translated text to realtime database", e)
+                }
         }
     }
 
-    fun fetchTranslatedText() {
+
+    suspend fun fetchTranslatedText(): List<String> = withContext(Dispatchers.IO) {
         currentUser?.uid?.let { uid ->
-            usersRef.child(uid).child("translatedText")
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        for (childSnapshot in snapshot.children) {
-                            val translatedText =
-                                childSnapshot.child("translatedText").getValue(String::class.java)
-                            translatedText?.let { translatedTexts.add(it) }
-                        }
-                    }
-                    override fun onCancelled(error: DatabaseError) {
+            Log.d(TAG,"debuging array")
+            val translatedTextRef = usersRef.child(uid)
+            val fetchedTranslatedTexts = mutableListOf<String>()
+            Log.d(TAG,"debuging array")
 
+            try {//here is where i need to specify key TODO
+                val dataSnapshot = translatedTextRef.get().await()
+                for (childSnapshot in dataSnapshot.children) {
+                    val translatedText = childSnapshot.getValue(String::class.java)
+
+                    // DEBUGGING
+                    println(childSnapshot.key)
+
+                    if (childSnapshot.key == "userName") {
+                        println("USERNAME EXISTS")
                     }
-                })
-        }
+
+                    translatedText?.let {
+                        fetchedTranslatedTexts.add(it)
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error fetching translated texts: $e")
+            }
+
+            fetchedTranslatedTexts
+        } ?: emptyList()
     }
 
-    private fun logout() {
+
+
+    fun logout() {
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signOut() //log Out
         val authStateListener = FirebaseAuth.AuthStateListener {

@@ -1,6 +1,7 @@
 package com.example.trekandtalk_lab3.components
 
 
+
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material3.MaterialTheme
@@ -78,3 +79,12 @@ fun RegularText(value : String) {
         style = MaterialTheme.typography.titleSmall)
 
 }
+/*
+@Composable
+ fun DisplayTranslatedTexts(translatedTexts: List<String>) {
+    Column {
+        translatedTexts.forEach { translatedText ->
+            Text(text = translatedText, fontSize = 16.sp)
+        }
+    }
+}*/

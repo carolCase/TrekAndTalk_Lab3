@@ -3,6 +3,7 @@ package com.example.trekandtalk_lab3.components
 import androidx.compose.foundation.background
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 
@@ -33,6 +34,8 @@ import androidx.compose.ui.unit.sp
 import com.example.trekandtalk_lab3.navigation.Screen
 import com.example.trekandtalk_lab3.ui.theme.DarkDarkGreen
 import com.example.trekandtalk_lab3.ui.theme.DarkMediumBlue
+import com.example.trekandtalk_lab3.ui.theme.MediumBeige
+import com.example.trekandtalk_lab3.ui.theme.MediumRosa
 import kotlinx.coroutines.delay
 
 
@@ -116,9 +119,9 @@ fun AuthButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = 
 @Composable
 fun TranslateButton(value:String, onButtonClicked : ()-> Unit) {
     Button(onClick = { onButtonClicked.invoke()}, modifier = Modifier
-        .fillMaxWidth()
-        .heightIn(48.dp),
-        contentPadding = PaddingValues(),
+        .fillMaxWidth(),
+        //.heightIn(48.dp),
+        contentPadding = PaddingValues(vertical = 200.dp),
         colors = ButtonDefaults.buttonColors(Color.Transparent)
     )
     {
@@ -139,4 +142,40 @@ fun TranslateButton(value:String, onButtonClicked : ()-> Unit) {
                 fontWeight = FontWeight.Bold)
         }
     }
+}
+@Composable
+fun ButtonComponent(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
+    Column( modifier = Modifier
+        .fillMaxWidth()
+        .padding(bottom = 16.dp) ) {
+        Button(
+            onClick = { onButtonClicked.invoke() }, modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(60.dp),
+            enabled = isEnabled,
+            colors = ButtonDefaults.buttonColors(Color.Transparent)
+        )
+        {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(100.dp)
+                    .background(
+                        brush = Brush.horizontalGradient(colors = listOf(MediumRosa, MediumBeige)),
+                        shape = RoundedCornerShape(50.dp),
+
+                        ),
+                contentAlignment = Alignment.Center
+            )
+            {
+                Text(
+                    text = value,
+                    fontSize = 18.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+    }
+
 }

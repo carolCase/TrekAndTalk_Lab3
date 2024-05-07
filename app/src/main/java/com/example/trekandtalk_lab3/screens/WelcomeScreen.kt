@@ -20,14 +20,12 @@ fun WelcomeScreen() {
       color = MaterialTheme.colorScheme.background,
 
     ) {
-
-
-
         Box(modifier = Modifier.fillMaxSize()){
             Image(painter = painterResource(id = R.drawable.hikers ),
                 contentDescription = "",
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier.fillMaxSize())
+
             HeadLineText(value = "Trek'n Talk")
             WelcomeButton()
         }

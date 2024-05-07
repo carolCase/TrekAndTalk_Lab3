@@ -5,7 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -150,19 +150,23 @@ fun DropDownMenuLanguage() {
 
 @Composable
 fun ClickableTextGoToProfile(value: String) {
-    Column(verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(
             text = value,
             style = TextStyle(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.SemiBold,
-                fontStyle = FontStyle.Normal),
+                fontStyle = FontStyle.Normal
+            ),
             textAlign = TextAlign.Center,
             textDecoration = TextDecoration.Underline,
-            modifier = Modifier.clickable {
-                Screen.NavigationRouter.navigateTo(Screen.SavedTranslationScreen)}
-
+            modifier = Modifier.clickable(onClick = { Screen.NavigationRouter.navigateTo(Screen.SavedTranslationScreen) })
         )
     }
 }
+
+
+

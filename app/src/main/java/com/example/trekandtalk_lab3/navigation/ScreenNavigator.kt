@@ -40,7 +40,8 @@ Crossfade(targetState = Screen.NavigationRouter.currentScreen, label = "")
              TranslatorScreen(translateViewModel = TranslateViewModel())
          }
         is Screen.SavedTranslationScreen->{
-            SavedTranslationScreen(translateViewModel = TranslateViewModel())
+            SavedTranslationScreen(
+                translateViewModel = TranslateViewModel())
         }
 
 
