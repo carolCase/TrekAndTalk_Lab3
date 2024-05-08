@@ -3,6 +3,7 @@ package com.example.trekandtalk_lab3.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 
 import androidx.compose.ui.res.painterResource
 
@@ -35,7 +37,7 @@ import com.example.trekandtalk_lab3.components.UserNameTextField
 import com.example.trekandtalk_lab3.data.uievents.SignUpUIEvent
 
 import com.example.trekandtalk_lab3.data.viewmodels.SignUpViewModel
-
+import com.example.trekandtalk_lab3.ui.theme.MediumLightGreen
 
 
 @Composable
@@ -44,59 +46,68 @@ fun SignUpScreen(signUpViewModel: SignUpViewModel) {
         color = DarkWhite,
         modifier = Modifier
             .fillMaxSize()
-            .padding(35.dp)
     ){
-      Column(modifier = Modifier
-          .background(DarkWhite)
-          .verticalScroll(state = rememberScrollState())
-          .fillMaxSize(),
-          verticalArrangement = Arrangement.Center,
-          horizontalAlignment = Alignment.CenterHorizontally)
-      {
-       SubHeadLineText(value = "Register new Account")
-          HeadLine2Text(value = "Trek'n Talk")
-        UserNameTextField(labelValue = "name",
-            painterResource(id = R.drawable.baseline_account_circle_24),
-            onTextSelected = {signUpViewModel.onEvent(SignUpUIEvent.UserNameChanged(it))},
-            errorStatus = signUpViewModel.signUpUIState.value.userNameError)
+        Box(modifier = Modifier.padding(45.dp)) {
 
-          EmailInputTextField(
-              labelValue = "email",
-              painterResource(id = R.drawable.baseline_email_24),
-              onTextSelected = {signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it))},
-              errorStatus = signUpViewModel.signUpUIState.value.emailError)
+            Column(
+                modifier = Modifier
+                    .background(DarkWhite)
+                    .verticalScroll(state = rememberScrollState())
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            )
+            {
+                SubHeadLineText(value = "Register new Account")
+                HeadLine2Text(value = "Trek'n Talk")
+                UserNameTextField(
+                    labelValue = "name",
+                    painterResource(id = R.drawable.baseline_account_circle_24),
+                    onTextSelected = { signUpViewModel.onEvent(SignUpUIEvent.UserNameChanged(it)) },
+                    errorStatus = signUpViewModel.signUpUIState.value.userNameError
+                )
 
-          PasswordTextField(labelValue = "password",
-              painterResource(id =  R.drawable.baseline_password_24),
-              onTextSelected = {signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it))},
-              errorStatus = signUpViewModel.signUpUIState.value.passwordError)
+                EmailInputTextField(
+                    labelValue = "email",
+                    painterResource(id = R.drawable.baseline_email_24),
+                    onTextSelected = { signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it)) },
+                    errorStatus = signUpViewModel.signUpUIState.value.emailError
+                )
 
-          CheckboxComponent(value = "Accept Privacy Policy and Terms of Use")
+                PasswordTextField(
+                    labelValue = "password",
+                    painterResource(id = R.drawable.baseline_password_24),
+                    onTextSelected = { signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it)) },
+                    errorStatus = signUpViewModel.signUpUIState.value.passwordError
+                )
 
-          Spacer(modifier = Modifier.height(26.dp))
+                CheckboxComponent(value = "Accept Privacy Policy and Terms of Use")
 
-             AuthButton(value ="Sign Up" , onButtonClicked = {
+                Spacer(modifier = Modifier.height(26.dp))
 
-                signUpViewModel.onEvent(SignUpUIEvent.RegisterButton)
-             },isEnabled = signUpViewModel.allErrorHandlingPassed.value)
+                AuthButton(value = "Sign Up", onButtonClicked = {
 
-
-
-
-          DividerComponent()
-          Spacer(modifier = Modifier.height(30.dp))
-          Image(painter = painterResource(id = R.drawable.google), contentDescription = "",
-              modifier = Modifier
-                  .size(100.dp)
-                  .clip(shape = CircleShape))
-
-          Spacer(modifier = Modifier.height(26.dp))
-          ClickableTextSignUp(value = "Already have an account")
-
-      }
+                    signUpViewModel.onEvent(SignUpUIEvent.RegisterButton)
+                }, isEnabled = signUpViewModel.allErrorHandlingPassed.value)
 
 
 
+
+                DividerComponent()
+                Spacer(modifier = Modifier.height(30.dp))
+                Image(
+                    painter = painterResource(id = R.drawable.google), contentDescription = "",
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(shape = CircleShape)
+                )
+
+                Spacer(modifier = Modifier.height(26.dp))
+                ClickableTextSignUp(value = "Already have an account")
+
+            }
+
+        }
 
 
     }

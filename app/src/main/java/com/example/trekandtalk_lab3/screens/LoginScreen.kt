@@ -4,6 +4,8 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+
 
 import androidx.compose.ui.res.painterResource
 
@@ -44,52 +47,61 @@ fun LoginScreen(loginViewModel:LoginViewModel) {
         color = DarkWhite,
         modifier = Modifier
             .fillMaxSize()
-            .padding(35.dp))
-
-    {
-        Column( modifier = Modifier
-            .background(DarkWhite)
-            .verticalScroll(state = rememberScrollState())
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally)
-        {
-
-            Image(painter = painterResource(id = R.drawable.hikers),
-                contentDescription = "",
+    ) {
+        Box(modifier = Modifier.padding(45.dp)) {
+            Column(
                 modifier = Modifier
-                    .clip(shape = CircleShape)
-                    .size(width = 250.dp, height = 250.dp))
+                    .background(DarkWhite)
+                    .verticalScroll(state = rememberScrollState())
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            )
+            {
+
+                Image(
+                    painter = painterResource(id = R.drawable.hikers),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .clip(shape = CircleShape)
+                        .size(width = 250.dp, height = 250.dp)
+                )
 
 
-            HeadLine2Text(value = "Login")
-            Spacer(modifier = Modifier.height(26.dp))
-            EmailInputTextField(labelValue = "email",
-                painterResource = painterResource(id = R.drawable.baseline_email_24),
-                onTextSelected = {loginViewModel.onEvent(LoginUIEvent.EmailChanged(it))},
-                errorStatus = loginViewModel.loginUIState.value.emailError)
+                HeadLine2Text(value = "Login")
+                Spacer(modifier = Modifier.height(26.dp))
+                EmailInputTextField(
+                    labelValue = "email",
+                    painterResource = painterResource(id = R.drawable.baseline_email_24),
+                    onTextSelected = { loginViewModel.onEvent(LoginUIEvent.EmailChanged(it)) },
+                    errorStatus = loginViewModel.loginUIState.value.emailError
+                )
 
-            PasswordTextField(labelValue = "password",
-                painterResource = painterResource(id = R.drawable.baseline_password_24),
-                onTextSelected = {loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it))},
-                errorStatus = loginViewModel.loginUIState.value.passwordError)
-            ClickableTextSignUp(value = " Forgot password" )
+                PasswordTextField(
+                    labelValue = "password",
+                    painterResource = painterResource(id = R.drawable.baseline_password_24),
+                    onTextSelected = { loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it)) },
+                    errorStatus = loginViewModel.loginUIState.value.passwordError
+                )
+                ClickableTextSignUp(value = " Forgot password")
 
-            Spacer(modifier = Modifier.height(26.dp))
+                Spacer(modifier = Modifier.height(26.dp))
 
-            AuthButton(value = "Login", onButtonClicked = {
-             loginViewModel.onEvent(LoginUIEvent.LoginButton)
-            },isEnabled = loginViewModel.allErrorHandlingPassed.value)
+                AuthButton(value = "Login", onButtonClicked = {
+                    loginViewModel.onEvent(LoginUIEvent.LoginButton)
+                }, isEnabled = loginViewModel.allErrorHandlingPassed.value)
+            }
+
+
+            BackHandler {
+                Screen.NavigationRouter.navigateTo(Screen.SignUpScreen)
+            }
         }
-
-
-           BackHandler {
-           Screen.NavigationRouter.navigateTo(Screen.SignUpScreen)
-           }
-
-
-
-
     }
 }
+
+
+
+
+
 

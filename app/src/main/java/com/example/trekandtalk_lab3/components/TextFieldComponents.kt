@@ -140,7 +140,6 @@ fun PasswordTextField(labelValue: String,painterResource: Painter,onTextSelected
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TranslateTextField(translateViewModel: TranslateViewModel) {
     val state = translateViewModel.state.value
@@ -153,7 +152,7 @@ fun TranslateTextField(translateViewModel: TranslateViewModel) {
             translateViewModel.onTextTranslatedChange(it)
         },
         label = { Text(text = "Write a sentence", color = Color.DarkGray) },
-        textStyle = LocalTextStyle.current.copy(color = Color.Black),
+        textStyle = LocalTextStyle.current.copy(color = Color.DarkGray),
         colors = TextFieldDefaults.colors(
             focusedContainerColor = Color.LightGray,
             cursorColor = Color.Black,

@@ -13,7 +13,6 @@ object ErrorHandling
             (userName.isNotEmpty() && userName.length>=4),
             if (userName.isNotEmpty() && userName.length < 4) "Username must be at least 4 characters long." else null
             )
-
     }
 
     fun checkEmail(email:String): HandlingResult {

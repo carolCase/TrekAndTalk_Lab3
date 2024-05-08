@@ -144,7 +144,7 @@ fun TranslateButton(value:String, onButtonClicked : ()-> Unit) {
     }
 }
 @Composable
-fun ButtonComponent(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = false) {
+fun ButtonComponent(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = true) {
 
         Button(
             onClick = { onButtonClicked.invoke() }, modifier = Modifier

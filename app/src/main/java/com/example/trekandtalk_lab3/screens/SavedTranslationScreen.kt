@@ -75,7 +75,7 @@ fun SavedTranslationScreen(translateViewModel: TranslateViewModel) {
                     }
                 }
 
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(200.dp))
 
             ButtonComponent(value = "Logout", onButtonClicked = {
                 translateViewModel.logout()

@@ -50,15 +50,11 @@ fun TranslatorScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                /*  Icon(imageVector = Icons.Filled.AccountCircle,
-        contentDescription = "",
-        tint = DarkDarkBlue)*/
-
                 Text(
                     text = "Welcome, ${userNameState.value}!",
                     style = MaterialTheme.typography.headlineLarge
                 )
-                Text(text = "Choose Language")
+                Text(text = "Choose Language", style = MaterialTheme.typography.headlineMedium)
                 DropDownMenuLanguage()
                 Spacer(modifier = Modifier.height(26.dp))
                 TranslateTextField(translateViewModel)
@@ -75,7 +71,7 @@ fun TranslatorScreen(
                         .align(
                             Alignment.CenterHorizontally
                         )
-                        .padding(26.dp)
+                        .padding(36.dp)
                 )
                 ClickableTextGoToProfile("Go to saved translations")
 

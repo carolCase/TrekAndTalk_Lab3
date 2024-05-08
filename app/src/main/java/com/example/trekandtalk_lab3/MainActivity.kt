@@ -13,10 +13,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.trekandtalk_lab3.navigation.ScreenNavigator
-import com.example.trekandtalk_lab3.screens.LoginScreen
-import com.example.trekandtalk_lab3.screens.SignUpScreen
-import com.example.trekandtalk_lab3.screens.WelcomeScreen
+
 import com.example.trekandtalk_lab3.ui.theme.DarkWhite
 import com.example.trekandtalk_lab3.ui.theme.TrekandTalk_Lab3Theme
 
@@ -31,12 +31,17 @@ class MainActivity : ComponentActivity() {
               Box (modifier = Modifier
                   .background(DarkWhite)
                   .fillMaxSize(),
-                  contentAlignment = Alignment.Center,)
+                  contentAlignment = Alignment.Center)
               {
                  ScreenNavigator()
               }
 
             }
+        }
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val controller = WindowCompat.getInsetsController(window, window.decorView)
+        controller?.let {
+            it.hide(WindowInsetsCompat.Type.statusBars())
         }
     }
 }

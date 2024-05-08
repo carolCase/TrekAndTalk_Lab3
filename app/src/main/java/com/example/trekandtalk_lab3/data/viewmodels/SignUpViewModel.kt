@@ -1,5 +1,8 @@
 package com.example.trekandtalk_lab3.data.viewmodels
 
+
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.trekandtalk_lab3.data.uievents.SignUpUIEvent
@@ -8,6 +11,7 @@ import com.example.trekandtalk_lab3.navigation.Screen
 import com.example.trekandtalk_lab3.rules.ErrorHandling
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+
 
 class SignUpViewModel:ViewModel() {
      var signUpUIState = mutableStateOf(SignUpUIState())
@@ -62,7 +66,12 @@ class SignUpViewModel:ViewModel() {
         allErrorHandlingPassed.value =userNameResult.status && emailResult.status && passwordResult.status
     }
 
-    private fun createUserFireBase(email:String,password:String,userName:String) {
+    private fun createUserFireBase(
+        email:String,
+        password:String,
+        userName:String,
+
+    ) {
         FirebaseAuth
             .getInstance()
             .createUserWithEmailAndPassword(email, password)
@@ -79,6 +88,9 @@ class SignUpViewModel:ViewModel() {
                                 if (userCreationTask.isSuccessful) {
                                     Screen.NavigationRouter.navigateTo(Screen.LoginScreen)
                                 }
+                            }
+                            .addOnFailureListener {
+                                Log.d(TAG,"unsuccessful sign up")
                             }
                     }
 
@@ -100,13 +112,3 @@ class SignUpViewModel:ViewModel() {
 }
 
 
-/* private fun createUserFireBase(email:String,password:String) {
-               FirebaseAuth
-                   .getInstance()
-                   .createUserWithEmailAndPassword(email,password)
-                   .addOnCompleteListener {
-                       if(it.isSuccessful){
-                          Screen.NavigationRouter.navigateTo(Screen.LoginScreen)
-                       }
-                   }
-     }*/

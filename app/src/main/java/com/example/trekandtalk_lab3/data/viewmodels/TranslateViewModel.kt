@@ -1,36 +1,23 @@
 package com.example.trekandtalk_lab3.data.viewmodels
-
 import android.content.ContentValues.TAG
 import android.util.Log
-
 import androidx.compose.runtime.MutableState
-
-
-
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.trekandtalk_lab3.data.uistates.TranslateState
 import androidx.compose.runtime.State
-
 import com.example.trekandtalk_lab3.navigation.Screen
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.values
-import com.google.firebase.database.values
-
-
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-import java.util.concurrent.Flow
 
 
 class TranslateViewModel : ViewModel() {
@@ -40,9 +27,6 @@ class TranslateViewModel : ViewModel() {
 
     private val _state = mutableStateOf(TranslateState())
     val state: State<TranslateState> = _state
-   // private val translatedTexts = mutableStateListOf<String>()
-
-
 
 
     fun onTextTranslatedChange(text: String) {
@@ -115,6 +99,9 @@ class TranslateViewModel : ViewModel() {
         }
         return userNameState
     }
+
+
+
     private fun addTranslatedText(translatedText: String) {
         currentUser?.uid?.let { uid ->
             val newRef = usersRef.child(uid).child("translatedText") // Reference the "translatedText" path
@@ -129,12 +116,27 @@ class TranslateViewModel : ViewModel() {
     }
 
 
+
+    private fun deleteTranslatedTextFromDatabase() {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        if (uid != null) {
+            usersRef.child(uid).child("translatedText").removeValue()
+                .addOnSuccessListener {
+                    Log.d(TAG, "Translated text deleted from realtime database")
+                }
+                .addOnFailureListener { e ->
+                    Log.e(TAG, "Failed to delete translated text from realtime database", e)
+                }
+        }
+    }
+
+
     suspend fun fetchTranslatedText(): List<String> = withContext(Dispatchers.IO) {
         currentUser?.uid?.let { uid ->
-            Log.d(TAG,"debuging array")
+            Log.d(TAG,"debugging array")
             val translatedTextRef = usersRef.child(uid)
             val fetchedTranslatedTexts = mutableListOf<String>()
-            Log.d(TAG,"debuging array")
+            Log.d(TAG,"debugging array")
 
             try {//here is where i need to specify key TODO
                 val dataSnapshot = translatedTextRef.get().await()
