@@ -67,7 +67,7 @@ fun SavedTranslationScreen(translateViewModel: TranslateViewModel) {
 
                 translatedTexts.let { texts ->
                     if (texts.isEmpty()) {
-                        Text(text = "No translations available") // or any empty state message
+                        Text(text = "No translations available")
                     } else {
                         texts.forEach { text ->
                             Text(text = text, style = MaterialTheme.typography.titleLarge, color = Color.Black)
@@ -80,6 +80,7 @@ fun SavedTranslationScreen(translateViewModel: TranslateViewModel) {
             ButtonComponent(value = "Logout", onButtonClicked = {
                 translateViewModel.logout()
             })
+            ButtonComponent(value = "Delete", onButtonClicked = { translateViewModel.deleteTranslatedTextFromDatabase() },isEnabled = true)
 
             BackHandler {
                 Screen.NavigationRouter.navigateTo(Screen.TranslatorScreen)

@@ -104,7 +104,7 @@ class TranslateViewModel : ViewModel() {
 
     private fun addTranslatedText(translatedText: String) {
         currentUser?.uid?.let { uid ->
-            val newRef = usersRef.child(uid).child("translatedText") // Reference the "translatedText" path
+            val newRef = usersRef.child(uid).child("translatedText")
             newRef.setValue(translatedText)
                 .addOnSuccessListener {
                     Log.d(TAG, "Translated text added to realtime database")
@@ -117,7 +117,7 @@ class TranslateViewModel : ViewModel() {
 
 
 
-    private fun deleteTranslatedTextFromDatabase() {
+    fun deleteTranslatedTextFromDatabase() {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
         if (uid != null) {
             usersRef.child(uid).child("translatedText").removeValue()

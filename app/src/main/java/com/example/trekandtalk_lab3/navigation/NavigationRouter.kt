@@ -10,9 +10,6 @@ sealed class Screen {
     data object TranslatorScreen :Screen()
     data object SavedTranslationScreen : Screen()
 
-
-
-
     object NavigationRouter {
          var currentScreen: MutableState<Screen> = mutableStateOf(WelcomeScreen)
         fun navigateTo(destination: Screen){

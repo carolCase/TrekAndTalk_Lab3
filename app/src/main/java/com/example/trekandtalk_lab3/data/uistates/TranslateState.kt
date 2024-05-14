@@ -9,4 +9,3 @@ data class TranslateState(
     )
 
 
-//val isButtonEnabled: Boolean = true

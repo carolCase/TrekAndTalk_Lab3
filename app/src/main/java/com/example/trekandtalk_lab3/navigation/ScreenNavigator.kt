@@ -21,34 +21,24 @@ import com.example.trekandtalk_lab3.screens.WelcomeScreen
 fun ScreenNavigator() {
     Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
 Crossfade(targetState = Screen.NavigationRouter.currentScreen, label = "")
-{
-        currentState->
+{   currentState->
     when(currentState.value){
-
         is Screen.WelcomeScreen->{
-            WelcomeScreen()
-        }
+            WelcomeScreen() }
 
         is Screen.SignUpScreen->{
-            SignUpScreen(signUpViewModel = SignUpViewModel())
-        }
+            SignUpScreen(signUpViewModel = SignUpViewModel()) }
 
         is Screen.LoginScreen->{
-            LoginScreen(loginViewModel = LoginViewModel())
-        }
-         is Screen.TranslatorScreen->{
-             TranslatorScreen(translateViewModel = TranslateViewModel())
-         }
+            LoginScreen(loginViewModel = LoginViewModel()) }
+
+        is Screen.TranslatorScreen->{
+             TranslatorScreen(translateViewModel = TranslateViewModel())}
+        
         is Screen.SavedTranslationScreen->{
             SavedTranslationScreen(
-                translateViewModel = TranslateViewModel())
-        }
-
-
-
+                translateViewModel = TranslateViewModel()) }
     }
-
-    
 }
     }
 }
