@@ -68,7 +68,6 @@ class TranslateViewModel : ViewModel() {
                 Log.e(TAG, "Translation failed", e)
             }
     }
-
     private fun updateTranslatedTextInDatabase(translatedText: String) {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
         if (uid != null) {
@@ -81,6 +80,7 @@ class TranslateViewModel : ViewModel() {
                 }
         }
     }
+
 
     fun fetchUserName(): MutableState<String> {
         val userNameState = mutableStateOf("")
@@ -102,7 +102,7 @@ class TranslateViewModel : ViewModel() {
 
 
 
-    private fun addTranslatedText(translatedText: String) {
+ private fun addTranslatedText(translatedText: String) {
         currentUser?.uid?.let { uid ->
             val newRef = usersRef.child(uid).child("translatedText")
             newRef.setValue(translatedText)
@@ -143,7 +143,7 @@ class TranslateViewModel : ViewModel() {
                 for (childSnapshot in dataSnapshot.children) {
                     val translatedText = childSnapshot.getValue(String::class.java)
 
-                    // DEBUGGING
+
                     println(childSnapshot.key)
 
                     if (childSnapshot.key == "userName") {

@@ -55,15 +55,13 @@ fun TranslatorScreen(
                     style = MaterialTheme.typography.headlineLarge
                 )
                 Text(text = "Choose Language", style = MaterialTheme.typography.headlineMedium)
+                Spacer(modifier = Modifier.height(16.dp))
                 DropDownMenuLanguage()
                 Spacer(modifier = Modifier.height(26.dp))
                 TranslateTextField(translateViewModel)
                 Spacer(modifier = Modifier.height(26.dp))
-
-
                 TranslateButton(value = "Translate", onButtonClicked =
                 { translateViewModel.onTranslateButtonClicked(state.textToBeTranslated)})
-
                 Text(
                     text = state.translatedText,
                     color = Color.White,
@@ -71,7 +69,7 @@ fun TranslatorScreen(
                         .align(
                             Alignment.CenterHorizontally
                         )
-                        .padding(36.dp)
+                        .padding(22.dp)
                 )
                 ClickableTextGoToProfile("Go to saved translations")
 

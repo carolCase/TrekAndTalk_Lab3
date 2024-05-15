@@ -116,12 +116,14 @@ fun AuthButton(value:String, onButtonClicked : ()-> Unit, isEnabled : Boolean = 
 }
 
 
+
+
 @Composable
 fun TranslateButton(value:String, onButtonClicked : ()-> Unit) {
     Button(onClick = { onButtonClicked.invoke()}, modifier = Modifier
-        .fillMaxWidth(),
-        //.heightIn(48.dp),
-        contentPadding = PaddingValues(vertical = 200.dp),
+        .fillMaxWidth()
+        .heightIn(48.dp),
+        contentPadding = PaddingValues(),
         colors = ButtonDefaults.buttonColors(Color.Transparent)
     )
     {

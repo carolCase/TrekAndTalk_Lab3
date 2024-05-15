@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -64,8 +65,7 @@ fun SavedTranslationScreen(translateViewModel: TranslateViewModel) {
 
             Text(text = "Your translation log", style = MaterialTheme.typography.displaySmall)
 
-
-                translatedTexts.let { texts ->
+            translatedTexts.let { texts ->
                     if (texts.isEmpty()) {
                         Text(text = "No translations available")
                     } else {
@@ -75,11 +75,12 @@ fun SavedTranslationScreen(translateViewModel: TranslateViewModel) {
                     }
                 }
 
-                Spacer(modifier = Modifier.height(200.dp))
+            Spacer(modifier = Modifier.height(200.dp))
 
             ButtonComponent(value = "Logout", onButtonClicked = {
                 translateViewModel.logout()
             })
+            Spacer(modifier = Modifier.height(26.dp))
             ButtonComponent(value = "Delete", onButtonClicked = { translateViewModel.deleteTranslatedTextFromDatabase() },isEnabled = true)
 
             BackHandler {
